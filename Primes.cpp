@@ -37,3 +37,19 @@ bool Primes::isPrimeHalf0(long number)
 			return false;
 	return true;
 }
+
+bool Primes::isPrimeHalf1(long number)
+{
+    if (number == 2L)
+        return true;
+    
+    if (number % 2L == 0)
+        return false;
+
+    long half = number / 2;
+
+    for (long i{3L}; i <= half; i += 2)
+		if (number % i == 0)
+			return false;
+	return true;
+}
