@@ -135,3 +135,22 @@ bool Primes::isPrimeSqrt2(long number)
 			return false;
 	return true;
 }
+
+bool Primes::isPrimeSqrt3(long number)
+{
+    if (number == 2 || number == 3)
+        return true;
+    
+    if (number % 2 == 0 || number % 3 == 0)
+        return false;
+
+    long top = std::sqrt(number);
+    long k{4};
+
+    for (long i{5}; i <= top; i += k) {
+		if (number % i == 0)
+			return false;
+        k = (k == 2) ? 4 : 2;
+    }
+	return true;
+}
