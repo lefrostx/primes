@@ -196,3 +196,26 @@ bool Primes::isPrimeSqrt3(long number)
     }
 	return true;
 }
+
+bool Primes::isPrimeSqrtP(long number)
+{
+    static std::vector<long> primes;
+
+    if (number == 1) {
+        primes.clear();
+        return true;
+    }
+
+    long top = std::sqrt(number);
+
+    for (auto x : primes) {
+        if (x > top)
+            break;
+		if (number % x == 0)
+			return false;
+    }
+    
+    primes.push_back(number);
+
+	return true;
+}
