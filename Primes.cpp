@@ -2,6 +2,21 @@
 
 bool Primes::isPrimeEach0(long number)
 {
+    if (number == 1)
+        return true;
+
+    int count{};
+
+    for (long i{1}; i <= number; ++i) {
+        if (number % i == 0)
+            ++count;
+    }
+
+	return count == 2;
+}
+
+bool Primes::isPrimeEach1(long number)
+{
     if (number == 2)
         return true;
 
@@ -11,7 +26,7 @@ bool Primes::isPrimeEach0(long number)
 	return true;
 }
 
-bool Primes::isPrimeEach1(long number)
+bool Primes::isPrimeEach2(long number)
 {
     if (number == 2L)
         return true;
@@ -25,7 +40,7 @@ bool Primes::isPrimeEach1(long number)
 	return true;
 }
 
-bool Primes::isPrimeHalf0(long number)
+bool Primes::isPrimeHalf1(long number)
 {
     if (number == 2)
         return true;
@@ -38,7 +53,7 @@ bool Primes::isPrimeHalf0(long number)
 	return true;
 }
 
-bool Primes::isPrimeHalf1(long number)
+bool Primes::isPrimeHalf2(long number)
 {
     if (number == 2L)
         return true;
@@ -54,7 +69,7 @@ bool Primes::isPrimeHalf1(long number)
 	return true;
 }
 
-bool Primes::isPrimeSqrt0(long number)
+bool Primes::isPrimeSqrt1(long number)
 {
     if (number == 2)
         return true;
