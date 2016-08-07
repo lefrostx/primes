@@ -126,6 +126,29 @@ bool Primes::isPrimeHalf3(long number)
 	return true;
 }
 
+bool Primes::isPrimeHalfP(long number)
+{
+    static std::vector<long> primes;
+
+    if (number == 1) {
+        primes.clear();
+        return true;
+    }
+
+    long half = number / 2;
+
+    for (auto x : primes) {
+        if (x > half)
+            break;
+		if (number % x == 0)
+			return false;
+    }
+    
+    primes.push_back(number);
+
+	return true;
+}
+
 bool Primes::isPrimeSqrt1(long number)
 {
     if (number == 2)
