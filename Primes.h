@@ -1,3 +1,8 @@
+#ifndef ALGO_PRIMES_H
+#define ALGO_PRIMES_H
+
+#include <vector>
+
 namespace Primes {
     bool isPrimeEach0(long number);
     bool isPrimeEach1(long number);
@@ -12,4 +17,7 @@ namespace Primes {
     bool isPrimeSqrt2(long number);
     bool isPrimeSqrt3(long number);
     bool isPrimeSqrtP(long number);
+    std::vector<long> primesEratoTo(long top);    
 }
+
+#endif
