@@ -71,3 +71,9 @@ BOOST_DATA_TEST_CASE(testIsPrimeSqrt1, testRange, number)
 	bool result{ isPrime(number) == Primes::isPrimeSqrt1(number) };
 	BOOST_TEST(result);
 }
+
+BOOST_DATA_TEST_CASE(testIsPrimeSqrt2, testRange, number)
+{
+	bool result{ isPrime(number) == Primes::isPrimeSqrt2(number) };
+	BOOST_TEST(result);
+}
