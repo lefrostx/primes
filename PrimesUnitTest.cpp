@@ -36,9 +36,9 @@ BOOST_DATA_TEST_CASE(testIsPrimeEach1, testRange, number)
 	BOOST_TEST(result);
 }
 
-BOOST_DATA_TEST_CASE(testIsPrimeHalf0, testRange, number)
+BOOST_DATA_TEST_CASE(testIsPrimeEach2, testRange, number)
 {
-	bool result{ isPrime(number) == Primes::isPrimeHalf0(number) };
+	bool result{ isPrime(number) == Primes::isPrimeEach2(number) };
 	BOOST_TEST(result);
 }
 
@@ -48,8 +48,14 @@ BOOST_DATA_TEST_CASE(testIsPrimeHalf1, testRange, number)
 	BOOST_TEST(result);
 }
 
-BOOST_DATA_TEST_CASE(testIsPrimeSqrt0, testRange, number)
+BOOST_DATA_TEST_CASE(testIsPrimeHalf2, testRange, number)
 {
-	bool result{ isPrime(number) == Primes::isPrimeSqrt0(number) };
+	bool result{ isPrime(number) == Primes::isPrimeHalf2(number) };
+	BOOST_TEST(result);
+}
+
+BOOST_DATA_TEST_CASE(testIsPrimeSqrt1, testRange, number)
+{
+	bool result{ isPrime(number) == Primes::isPrimeSqrt1(number) };
 	BOOST_TEST(result);
 }
