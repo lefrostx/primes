@@ -42,6 +42,12 @@ BOOST_DATA_TEST_CASE(testIsPrimeEach2, testRange, number)
 	BOOST_TEST(result);
 }
 
+BOOST_DATA_TEST_CASE(testIsPrimeEach3, testRange, number)
+{
+	bool result{ isPrime(number) == Primes::isPrimeEach3(number) };
+	BOOST_TEST(result);
+}
+
 BOOST_DATA_TEST_CASE(testIsPrimeHalf1, testRange, number)
 {
 	bool result{ isPrime(number) == Primes::isPrimeHalf1(number) };
