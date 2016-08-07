@@ -7,11 +7,11 @@
 
 namespace bdata = boost::unit_test::data;
 constexpr long endPrimeRange = 1000L;
-auto testRange = bdata::xrange(1L, endPrimeRange, 1L);
+auto testRange = bdata::xrange(2L, endPrimeRange);
 
 bool isPrime(long number)
 {
-    if (number == 1)
+    if (number == 2)
         return true;
 
     int count{};
