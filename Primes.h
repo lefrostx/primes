@@ -5,5 +5,6 @@ namespace Primes {
     bool isPrimeEach3(long number);
     bool isPrimeHalf1(long number);
     bool isPrimeHalf2(long number);
+    bool isPrimeHalf3(long number);
     bool isPrimeSqrt1(long number);
 }
