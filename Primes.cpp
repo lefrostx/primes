@@ -119,3 +119,19 @@ bool Primes::isPrimeSqrt1(long number)
 			return false;
 	return true;
 }
+
+bool Primes::isPrimeSqrt2(long number)
+{
+    if (number == 2)
+        return true;
+    
+    if (number % 2 == 0)
+        return false;
+
+    long top = std::sqrt(number);
+
+    for (long i{3}; i <= top; i += 2)
+		if (number % i == 0)
+			return false;
+	return true;
+}
