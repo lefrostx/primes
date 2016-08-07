@@ -72,6 +72,12 @@ BOOST_DATA_TEST_CASE(testIsPrimeHalf3, testRange, number)
 	BOOST_TEST(result);
 }
 
+BOOST_DATA_TEST_CASE(testIsPrimeHalfP, testRange, number)
+{
+	bool result{ isPrime(number) == Primes::isPrimeHalfP(number) };
+	BOOST_TEST(result);
+}
+
 BOOST_DATA_TEST_CASE(testIsPrimeSqrt1, testRange, number)
 {
 	bool result{ isPrime(number) == Primes::isPrimeSqrt1(number) };
