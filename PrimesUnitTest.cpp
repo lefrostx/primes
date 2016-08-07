@@ -11,13 +11,17 @@ auto testRange = bdata::xrange(1L, endPrimeRange, 1L);
 
 bool isPrime(long number)
 {
-    if (number == 2)
+    if (number == 1)
         return true;
 
-    for (long i{2L}; i < number; ++i)
-		if (number % i == 0)
-			return false;
-	return true;
+    int count{};
+
+    for (long i{1}; i <= number; ++i) {
+        if (number % i == 0)
+            ++count;
+    }
+
+	return count == 2;
 }
 
 BOOST_DATA_TEST_CASE(testIsPrimeEach0, testRange, number)
