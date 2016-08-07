@@ -1,5 +1,6 @@
 #include "Primes.h"
 #include <cmath>
+#include <vector>
 
 bool Primes::isPrimeEach0(long number)
 {
@@ -56,6 +57,24 @@ bool Primes::isPrimeEach3(long number)
 			return false;
         k = (k == 2) ? 4 : 2;
     }
+	return true;
+}
+
+bool Primes::isPrimeEachP(long number)
+{
+    static std::vector<long> primes;
+
+    if (number == 1) {
+        primes.clear();
+        return true;
+    }
+
+    for (auto x : primes)
+		if (number % x == 0)
+			return false;
+    
+    primes.push_back(number);
+
 	return true;
 }
 
