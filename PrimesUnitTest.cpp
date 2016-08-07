@@ -7,7 +7,7 @@
 #include <vector>
 
 namespace bdata = boost::unit_test::data;
-constexpr long endPrimeRange = 1000L;
+constexpr long endPrimeRange = 1000;
 auto testRange = bdata::xrange(2L, endPrimeRange);
 
 bool isPrime(long number)
