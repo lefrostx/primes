@@ -4,7 +4,7 @@
 
 bool Primes::isPrimeEach0(long number)
 {
-    if (number == 1)
+    if (number == 2)
         return true;
 
     int count{};
@@ -22,7 +22,7 @@ bool Primes::isPrimeEach1(long number)
     if (number == 2)
         return true;
 
-    for (long i{2L}; i < number; ++i)
+    for (long i{2}; i < number; ++i)
 		if (number % i == 0)
 			return false;
 	return true;
@@ -30,13 +30,13 @@ bool Primes::isPrimeEach1(long number)
 
 bool Primes::isPrimeEach2(long number)
 {
-    if (number == 2L)
+    if (number == 2)
         return true;
     
-    if (number % 2L == 0)
+    if (number % 2 == 0)
         return false;
 
-    for (long i{3L}; i < number; i += 2)
+    for (long i{3}; i < number; i += 2)
 		if (number % i == 0)
 			return false;
 	return true;
@@ -64,8 +64,9 @@ bool Primes::isPrimeEachP(long number)
 {
     static std::vector<long> primes;
 
-    if (number == 1) {
+    if (number == 2) {
         primes.clear();
+        primes.push_back(number);
         return true;
     }
 
@@ -85,7 +86,7 @@ bool Primes::isPrimeHalf1(long number)
 
     long half = number / 2;
 
-    for (long i{2L}; i <= half; ++i)
+    for (long i{2}; i <= half; ++i)
 		if (number % i == 0)
 			return false;
 	return true;
@@ -93,15 +94,15 @@ bool Primes::isPrimeHalf1(long number)
 
 bool Primes::isPrimeHalf2(long number)
 {
-    if (number == 2L)
+    if (number == 2)
         return true;
     
-    if (number % 2L == 0)
+    if (number % 2 == 0)
         return false;
 
     long half = number / 2;
 
-    for (long i{3L}; i <= half; i += 2)
+    for (long i{3}; i <= half; i += 2)
 		if (number % i == 0)
 			return false;
 	return true;
@@ -130,8 +131,9 @@ bool Primes::isPrimeHalfP(long number)
 {
     static std::vector<long> primes;
 
-    if (number == 1) {
+    if (number == 2) {
         primes.clear();
+        primes.push_back(number);
         return true;
     }
 
@@ -156,7 +158,7 @@ bool Primes::isPrimeSqrt1(long number)
 
     long top = std::sqrt(number);
 
-    for (long i{2L}; i <= top; ++i)
+    for (long i{2}; i <= top; ++i)
 		if (number % i == 0)
 			return false;
 	return true;
@@ -201,8 +203,9 @@ bool Primes::isPrimeSqrtP(long number)
 {
     static std::vector<long> primes;
 
-    if (number == 1) {
+    if (number == 2) {
         primes.clear();
+        primes.push_back(number);
         return true;
     }
 
