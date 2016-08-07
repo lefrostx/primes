@@ -1,4 +1,5 @@
 #include "Primes.h"
+#include <cmath>
 
 bool Primes::isPrimeEach0(long number)
 {
@@ -111,9 +112,9 @@ bool Primes::isPrimeSqrt1(long number)
     if (number == 2)
         return true;
 
-    long sqrt = number / 2;
+    long top = std::sqrt(number);
 
-    for (long i{2L}; i <= sqrt; ++i)
+    for (long i{2L}; i <= top; ++i)
 		if (number % i == 0)
 			return false;
 	return true;
