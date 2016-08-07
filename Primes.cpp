@@ -24,3 +24,16 @@ bool Primes::isPrimeEach1(long number)
 			return false;
 	return true;
 }
+
+bool Primes::isPrimeHalf0(long number)
+{
+    if (number == 2)
+        return true;
+
+    long half = number / 2;
+
+    for (long i{2L}; i <= half; ++i)
+		if (number % i == 0)
+			return false;
+	return true;
+}
