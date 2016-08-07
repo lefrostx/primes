@@ -3,4 +3,5 @@ namespace Primes {
     bool isPrimeEach1(long number);
     bool isPrimeHalf0(long number);
     bool isPrimeHalf1(long number);
+    bool isPrimeSqrt0(long number);
 }
