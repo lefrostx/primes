@@ -17,7 +17,7 @@ namespace Primes {
     bool isPrimeSqrt2(long number);
     bool isPrimeSqrt3(long number);
     bool isPrimeSqrtP(long number);
-    std::vector<long> primesEratoTo(long top);    
+    std::vector<long> primesEratoTo(long top);
 }
 
 #endif
