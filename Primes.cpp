@@ -53,3 +53,16 @@ bool Primes::isPrimeHalf1(long number)
 			return false;
 	return true;
 }
+
+bool Primes::isPrimeSqrt0(long number)
+{
+    if (number == 2)
+        return true;
+
+    long sqrt = number / 2;
+
+    for (long i{2L}; i <= sqrt; ++i)
+		if (number % i == 0)
+			return false;
+	return true;
+}
