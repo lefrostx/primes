@@ -4,6 +4,7 @@
 #include <boost/test/data/monomorphic.hpp>
 
 #include "Primes.h"
+#include <vector>
 
 namespace bdata = boost::unit_test::data;
 constexpr long endPrimeRange = 1000L;
@@ -22,6 +23,15 @@ bool isPrime(long number)
     }
 
 	return count == 2;
+}
+
+std::vector<long> primesTo(long endRange)
+{
+    std::vector<long> primes;
+    for (long i{2}; i <= endRange; ++i)
+        if (isPrime(i))
+            primes.push_back(i);
+    return primes;
 }
 
 BOOST_DATA_TEST_CASE(testIsPrimeEach0, testRange, number)
@@ -99,5 +109,11 @@ BOOST_DATA_TEST_CASE(testIsPrimeSqrt3, testRange, number)
 BOOST_DATA_TEST_CASE(testIsPrimeSqrtP, testRange, number)
 {
 	bool result{ isPrime(number) == Primes::isPrimeSqrtP(number) };
+	BOOST_TEST(result);
+}
+
+BOOST_DATA_TEST_CASE(testPrimeErato, testRange, number)
+{
+	bool result{ primesTo(number) == Primes::primesEratoTo(number) };
 	BOOST_TEST(result);
 }
