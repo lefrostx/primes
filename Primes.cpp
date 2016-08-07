@@ -223,16 +223,16 @@ bool Primes::isPrimeSqrtP(long number)
 	return true;
 }
 
-std::vector<long> Primes::primesEratoTo(long topRange)
+std::vector<long> Primes::primesEratoTo(long n)
 {
     std::vector<long> primes;
-    long n{topRange + 1};    
-    std::vector<bool> a(n, true);
+    primes.reserve(n + 1);  
+    std::vector<bool> a(n + 1, true);
     a[0] = a[1] = false;
     
     for (int p{2}; p <= n; ++p) {
         if (a[p]) {
-            for (int k{2}; k * p <= n; ++k) {
+            for (int k{p}; k * p <= n; ++k) {
                 a[k * p] = false;
             }
         }
