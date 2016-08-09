@@ -3,35 +3,43 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include "Primes.h"
 #include <vector>
+#include "Primes.h"
 
-namespace bdata = boost::unit_test::data;
-constexpr long endPrimeRange = 1000;
-auto testRange = bdata::xrange(2L, endPrimeRange);
+namespace {
 
-bool isPrime(long number)
-{
-    if (number == 2)
-        return true;
+    namespace bdata = boost::unit_test::data;
+    constexpr long endPrimeRange = 1000;
+    auto testRange = bdata::xrange(2L, endPrimeRange);
 
-    int count{};
+    bool isPrime(long number)
+    {
+        if (number == 2)
+            return true;
 
-    for (long i{1}; i <= number; ++i) {
-        if (number % i == 0)
-            ++count;
+        long count{};
+
+        for (long i{1}; i <= number; ++i)
+            if (number % i == 0)
+                ++count;
+
+	    return count == 2;
     }
 
-	return count == 2;
+    std::vector<long> primesTo(long endRange)
+    {
+        std::vector<long> primes;
+        for (long i{2}; i <= endRange; ++i)
+            if (isPrime(i))
+                primes.push_back(i);
+        return primes;
+    }
 }
 
-std::vector<long> primesTo(long endRange)
+BOOST_DATA_TEST_CASE(testPrimeErato, testRange, number)
 {
-    std::vector<long> primes;
-    for (long i{2}; i <= endRange; ++i)
-        if (isPrime(i))
-            primes.push_back(i);
-    return primes;
+	bool result{ primesTo(number) == Primes::primesEratoTo(number) };
+	BOOST_TEST(result);
 }
 
 BOOST_DATA_TEST_CASE(testIsPrimeEach0, testRange, number)
@@ -109,11 +117,5 @@ BOOST_DATA_TEST_CASE(testIsPrimeSqrt3, testRange, number)
 BOOST_DATA_TEST_CASE(testIsPrimeSqrtP, testRange, number)
 {
 	bool result{ isPrime(number) == Primes::isPrimeSqrtP(number) };
-	BOOST_TEST(result);
-}
-
-BOOST_DATA_TEST_CASE(testPrimeErato, testRange, number)
-{
-	bool result{ primesTo(number) == Primes::primesEratoTo(number) };
 	BOOST_TEST(result);
 }
