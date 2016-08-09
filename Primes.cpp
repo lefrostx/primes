@@ -209,10 +209,10 @@ bool Primes::isPrimeSqrtP(long number)
         return true;
     }
 
-    long top = std::sqrt(number);
+    long topSqrt = std::sqrt(number);
 
     for (auto x : primes) {
-        if (x > top)
+        if (x > topSqrt)
             break;
 		if (number % x == 0)
 			return false;
@@ -225,23 +225,20 @@ bool Primes::isPrimeSqrtP(long number)
 
 std::vector<long> Primes::primesEratoTo(long n)
 {
+    // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Pseudocode
     std::vector<long> primes;
     primes.reserve(n + 1);  
-    std::vector<bool> a(n + 1, true);
-    a[0] = a[1] = false;
+    std::vector<bool> A(n + 1, true);
+    A[0] = A[1] = false;
     
-    for (int p{2}; p <= n; ++p) {
-        if (a[p]) {
-            for (int k{p}; k * p <= n; ++k) {
-                a[k * p] = false;
-            }
-        }
-    }
+    for (long i{2}; i <= n; ++i)
+        if (A[i])
+            for (long j{i * i}; j <= n; j += i)
+                A[j] = false;
 
-    for (int i{2}; i < a.size(); ++i) {
-        if (a[i])
+    for (long i{2}; i < A.size(); ++i)
+        if (A[i])
             primes.push_back(i);
-    }
 
     return primes;
 }
