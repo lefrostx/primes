@@ -17,22 +17,22 @@ std::vector<long> generatePrimes(pFuncPrime isPrime, long top)
     return primes;
 }
 
-int calcPrimeByTime(pFuncPrime isPrime, std::chrono::seconds duration)
+long calcPrimeByTime(pFuncPrime isPrime, std::chrono::seconds duration)
 {
     using namespace std::chrono;
 
     auto endPoint = steady_clock::now() + duration;
     
-    int primeCount{};
+    long primeCount{};
 
-    for (int number{2}; steady_clock::now() < endPoint; ++number)
+    for (long number{2}; steady_clock::now() < endPoint; ++number)
         if (isPrime(number))
             ++primeCount;    
 
     return primeCount;
 }
 
-double calcPrimeByTop(pFuncPrime isPrime, long top)
+long calcPrimeByTop(pFuncPrime isPrime, long top)
 {
     using namespace std::chrono;
 
@@ -43,7 +43,7 @@ double calcPrimeByTop(pFuncPrime isPrime, long top)
     return duration_cast<microseconds>(endPoint - startPoint).count();
 }
 
-double calcEratoByTop(long top)
+long calcEratoByTop(long top)
 {
     using namespace std::chrono;
 
@@ -76,15 +76,16 @@ int main()
         {"isPrimeSqrtP", Primes::isPrimeSqrtP}
     };
 
-    int testSeconds{1};
-    std::cout << "Input time value for test functions (seconds): ";
+    long testSeconds{1};
+    std::cout << "This program tests prime number algorithms.\n"
+              << "\nPart1. Testing functions by fixed time.\n"
+              << "Input time (in seconds): ";
     std::cin >> testSeconds;
-    std::cout << "Testing. Please wait...\n";
-    std::cout << "Task: find prime numbers for " << testSeconds << " seconds.\n"
-        << ".\nPrime count results:\n" 
+    std::cout << "\nTask: find prime numbers for " << testSeconds << " seconds.\n"
+        << "Prime count results:\n" 
         << "__________________________________________________\n"
         << std::setw(25) << "|     Function name     |"
-        << std::setw(25) << "   Count                |\n"
+        << std::setw(25) << "     Count (primes)     |\n"
         << "|_______________________|________________________|\n";
 
     for (const auto & x : data) {
@@ -93,15 +94,16 @@ int main()
                   << '|' << std::setw(24) << count << "|\n";
     }
 
-    std::cout << "|_______________________|________________________|\n"; 
+    std::cout << "|_______________________|________________________|\n";
 
     long topPrime{10000};
-    std::cout << "\nInput top prime number: ";
+    std::cout << std::fixed;
+    std::cout << "\nPart2. Testing functions by range [2, top]\n"
+              << "\nInput top number: ";
     std::cin >> topPrime;
-    std::cout << "Testing. Please wait...\n"; 
 
-    std::cout << "Task: find prime numbers up to " << topPrime
-              << ".\nTime results:\n" 
+    std::cout << "\nTask: find prime numbers in range [2, " << topPrime << "]\n"
+              << "Time results:\n" 
               << "__________________________________________________\n"
               << std::setw(25) << "|     Function name     |"
               << std::setw(25) << "   Time (microseconds)  |\n"
@@ -111,7 +113,7 @@ int main()
         auto time = calcPrimeByTop(x.pFunc, topPrime);
         std::cout << '|' << std::setw(23) << x.funcName 
                   << '|' << std::setw(24) << time << "|\n";
-    } 
+    }
 
     auto time = calcEratoByTop(topPrime);
     std::cout << '|' << std::setw(23) << "Eratosthenes" 
